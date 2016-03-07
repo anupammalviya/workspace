@@ -1,0 +1,23 @@
+package com.fork.join.example;
+
+import java.util.List;
+import java.util.concurrent.RecursiveTask;
+
+public class FolderProcessor extends RecursiveTask<List<String>> {
+	
+	private static final long serialVersionUID = 1L;
+	//This attribute will store the full path of the folder this task is going to process.
+	private final String      path;
+	//This attribute will store the name of the extension of the files this task is going to look for.
+	private final String      extension;
+	 
+	//Implement the constructor of the class to initialize its attributes
+	public FolderProcessor(String path, String extension) {
+		this.path = path;
+		this.extension = extension;
+	}
+	 
+	   //Implement the compute() method. As you parameterized the RecursiveTask class with the List<String> type, 
+	   //this method has to return an object of that type.
+
+}

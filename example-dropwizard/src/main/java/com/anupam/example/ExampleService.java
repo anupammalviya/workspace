@@ -1,0 +1,25 @@
+package com.anupam.example;
+
+import com.anupam.example.config.ExampleServiceConfiguration;
+import com.anupam.example.resource.HelloResource;
+import com.yammer.dropwizard.Service;
+import com.yammer.dropwizard.config.Bootstrap;
+import com.yammer.dropwizard.config.Environment;
+
+public class ExampleService extends Service<ExampleServiceConfiguration> {
+	
+	public static void main(String[] args) throws Exception {
+        new ExampleService().run(args);
+    }
+
+    @Override
+    public void initialize(final Bootstrap<ExampleServiceConfiguration> bootstrap) {
+        bootstrap.setName("dropwizard-example");
+    }
+
+    @Override
+    public void run(final ExampleServiceConfiguration conf, final Environment env) throws Exception {
+        env.addResource(new HelloResource(conf.getMessages()));
+    }
+
+}

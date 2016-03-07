@@ -1,0 +1,7 @@
+package com.anupam.example;
+
+import com.yammer.dropwizard.Service;
+
+public class ExampleService extends Service<T> {
+
+}

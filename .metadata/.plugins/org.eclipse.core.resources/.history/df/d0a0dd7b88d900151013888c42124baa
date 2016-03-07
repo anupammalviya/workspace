@@ -1,0 +1,5 @@
+package com.anupam.example.config;
+
+public class MessagesConfiguration {
+
+}

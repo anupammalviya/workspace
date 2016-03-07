@@ -1,0 +1,7 @@
+package com.anupam.example.config;
+
+import com.yammer.dropwizard.config.Configuration;
+
+public class ExampleServiceConfiguration extends Configuration {
+
+}

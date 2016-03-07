@@ -1,0 +1,23 @@
+package com.fork.join.example;
+
+public class Node {
+	int data;
+    Node next;
+	
+	Node Reverse(Node head) {
+	    Node current,next,prev;
+	    prev = null;
+	    //next = head;
+	    current = head;
+	    while(current != null) {
+	        next = current.next;
+	        current.next = prev;
+	        prev = current;
+	        current = next;
+	    }
+	    head = prev;
+	    return head;
+
+	}
+
+}

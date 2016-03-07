@@ -1,0 +1,77 @@
+
+public class MaxRodCutting {
+	
+	public static int maxRodCuttingProduct(int n) {
+		if(n == 1 || n == 0) {
+			return 0;
+		}
+		
+		int maxValue = 0;
+		for(int i =1;i<n;i++) {
+			maxValue = max(maxValue, i*(n-i), maxRodCuttingProduct(n-i)*i);
+		}
+		
+		return maxValue;
+	}
+	
+	public static int maxRodCuttingProductDynamic(int n) {
+		int []val = new int[n+1];
+		val[0] = 0;val[1] = 0;
+		for(int i = 1;i<=n;i++) {
+			int max_value = 0;
+			for(int j=1;j<=i/2;j++) {
+				max_value = max(max_value,(i-j)*j,j*val[i-j]);
+			}
+			
+			val[i] = max_value;
+		}
+		return val[n];
+	}
+	
+	public static int max(int a, int b, int c) {
+		if(a<b && b<c) {
+			return c;
+		} else if(a<b && b> c) {
+			return b;
+		} else if(a>b && a>c) {
+			return a;
+		} else if(a>b && a<c) {
+			return c;
+		} else if(a>c && b>a ){
+			return b;
+		} else {
+			return a;
+		}
+	}
+	
+	public static int maxCost(int price[], int n) {
+		
+		if(n <=0) {
+			return 0;
+		}
+		
+//		if(n==1) {
+//			return price[1];
+//		}
+		
+		int maxValue = Integer.MIN_VALUE;
+		
+		for(int i=0;i<n;i++) {
+			maxValue = max(maxValue, price[i] + maxCost(price,n-i-1));
+		}
+		return maxValue;
+	}
+	
+	public static int max(int a, int b) {
+		return a>b?a:b;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(maxRodCuttingProduct(10));
+		
+		int arr[] = {1, 5, 8, 9, 10, 17, 17, 20};
+		System.out.println(maxCost(arr, arr.length));
+		System.out.println(maxRodCuttingProductDynamic(10));
+	}
+
+}
